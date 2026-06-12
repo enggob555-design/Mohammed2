@@ -4,33 +4,233 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>محمد الخفاجي - Royal Card</title>
+    <!-- Google Fonts for Arabic Cairo and English Outfit typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Background aura glowing shapes -->
+    <div class="bg-auras">
+        <div class="aura aura-1"></div>
+        <div class="aura aura-2"></div>
+        <div class="aura aura-3"></div>
+    </div>
+
+    <!-- Real Madrid background shield (with opacity and gray filter, shifted to hide cross) -->
     <div class="madrid-shield"></div>
 
-    <div class="glass-card">
-        <div class="profile-wrapper">
-            <div class="gold-ring"></div>
-            <img src="IMG-20260208-WA0001.jpg" alt="محمد الخفاجي" class="profile-pic">
-        </div>
+    <!-- Container for 3D Tilt effect -->
+    <div class="card-container">
+        <div class="glass-card">
+            <!-- Dynamic reflection light overlay -->
+            <div class="card-glow"></div>
 
-        <h1 class="royal-name">محمد الخفاجي</h1>
-        <div class="blood-badge">O+</div>
+            <!-- Royal Club Emblem -->
+            <div class="royal-emblem">
+                <img src="https://upload.wikimedia.org/wikipedia/en/5/56/Real_Madrid_CF.svg" alt="Real Madrid" class="emblem-img">
+            </div>
 
-        <div class="action-grid">
-            <a href="tel:+9647703084383" class="gold-item">
-                <span class="label">اتصال رئيسي</span>
-                <span class="value">07703084383</span>
-            </a>
-            <a href="tel:+9647503772659" class="gold-item">
-                <span class="label">اتصال إضافي</span>
-                <span class="value">07503772659</span>
-            </a>
-            <a href="https://wa.me/9647703084383" class="gold-item whatsapp-gold">واتساب المراسلة</a>
-            <a href="https://www.facebook.com/share/17qd3D1cnK/" class="gold-item fb-gold">الملف الشخصي فيسبوك</a>
-            <a href="mailto:mooh80mm@gmail.com" class="gold-item mail-gold">ارسل بريداً إلكترونياً</a>
+            <!-- Profile section -->
+            <div class="profile-section">
+                <div class="profile-wrapper">
+                    <!-- Rotating golden ring -->
+                    <div class="gold-ring"></div>
+                    <!-- Pulsating active status indicator -->
+                    <div class="status-dot"></div>
+                    <img src="IMG-20260208-WA0001.jpg" alt="محمد الخفاجي" class="profile-pic">
+                </div>
+            </div>
+
+            <!-- Information section -->
+            <div class="info-section">
+                <h1 class="royal-name">محمد الخفاجي</h1>
+                <p class="royal-title">الملف الشخصي الرقمي</p>
+                <div class="blood-badge">
+                    <svg class="icon-drop" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+                    <span>فصيلة الدم O+</span>
+                </div>
+            </div>
+
+            <!-- Contact numbers grid (Primary & Secondary) -->
+            <div class="contact-grid">
+                <a href="tel:+9647703084383" class="gold-item tel-primary">
+                    <div class="icon-wrapper">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    </div>
+                    <div class="item-text">
+                        <span class="label">الاتصال الرئيسي</span>
+                        <span class="value">07703084383</span>
+                    </div>
+                </a>
+                <a href="tel:+9647503772659" class="gold-item tel-secondary">
+                    <div class="icon-wrapper">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                    </div>
+                    <div class="item-text">
+                        <span class="label">الاتصال الإضافي</span>
+                        <span class="value">07503772659</span>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Social and communications actions -->
+            <div class="actions-stack">
+                <a href="https://wa.me/9647703084383" target="_blank" class="gold-item whatsapp-gold">
+                    <div class="icon-wrapper">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.73-1.455L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.965C16.29 1.977 13.81 1.05 11.998 1.05c-5.442 0-9.866 4.372-9.87 9.802 0 1.764.47 3.487 1.366 5.022L2.43 21.61l6.195-1.616-.017-.008-.96-.543zM16.57 13.78c-.287-.144-1.7-.84-1.963-.935-.262-.095-.453-.144-.644.144-.191.288-.74.935-.907 1.127-.167.19-.334.215-.62.071-.287-.143-1.21-.446-2.305-1.424-.853-.761-1.428-1.701-1.595-1.99-.167-.287-.018-.443.125-.585.13-.127.287-.335.43-.502.143-.167.19-.287.287-.479.096-.19.048-.36-.024-.503-.071-.144-.643-1.55-.882-2.126-.233-.564-.469-.487-.643-.496-.167-.008-.358-.01-.55-.01-.19 0-.501.071-.762.358-.263.287-1.003.98-1.003 2.39 0 1.41 1.027 2.77 1.17 2.962.143.19 2.022 3.09 4.899 4.331.684.296 1.218.472 1.634.604.688.219 1.314.188 1.808.114.55-.082 1.7-.695 1.939-1.366.239-.672.239-1.246.168-1.366-.072-.12-.263-.19-.55-.335z"/></svg>
+                    </div>
+                    <span>واتساب المراسلة</span>
+                </a>
+                <a href="https://www.facebook.com/share/17qd3D1cnK/" target="_blank" class="gold-item fb-gold">
+                    <div class="icon-wrapper">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    </div>
+                    <span>الملف الشخصي فيسبوك</span>
+                </a>
+                <a href="mailto:mooh80mm@gmail.com" class="gold-item mail-gold">
+                    <div class="icon-wrapper">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    </div>
+                    <span>أرسل بريداً إلكترونياً</span>
+                </a>
+            </div>
+
+            <!-- Utility features: Save Contact & Share Grid -->
+            <div class="utilities-section">
+                <button onclick="downloadVCF()" class="btn-main btn-save-contact">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+                    <span>حفظ في جهات الاتصال</span>
+                </button>
+                <div class="utility-grid">
+                    <button onclick="shareCard()" class="btn-secondary">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                        <span>مشاركة البطاقة</span>
+                    </button>
+                    <button onclick="openQRModal()" class="btn-secondary">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><line x1="7" y1="7" x2="7.01" y2="7"/><line x1="17" y1="7" x2="17.01" y2="7"/><line x1="17" y1="17" x2="17.01" y2="17"/><line x1="7" y1="17" x2="7.01" y2="17"/></svg>
+                        <span>رمز QR</span>
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
+
+    <!-- QR Code Glass Modal -->
+    <div id="qrModal" class="modal-overlay" onclick="closeQRModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <button class="close-btn" onclick="closeQRModal(event)">&times;</button>
+            <h3>مسح رمز الـ QR</h3>
+            <p>امسح الرمز أدناه لفتح البطاقة على هاتف آخر</p>
+            <div class="qr-wrapper">
+                <img id="qrImage" src="" alt="رمز الاستجابة السريعة">
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <!-- Interactive JS Functionality -->
+    <script>
+        // 3D Tilt Effect
+        const card = document.querySelector('.glass-card');
+        const container = document.querySelector('.card-container');
+
+        if (window.innerWidth > 768) {
+            container.addEventListener('mousemove', (e) => {
+                const rect = container.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const xc = rect.width / 2;
+                const yc = rect.height / 2;
+                
+                const angleX = (yc - y) / yc * 8; // Max 8 degrees
+                const angleY = (x - xc) / xc * 8;
+                
+                card.style.transform = `rotateX(${angleX}deg) rotateY(${angleY}deg)`;
+                
+                // Light glow dynamic reflection position
+                const glow = document.querySelector('.card-glow');
+                const px = (x / rect.width) * 100;
+                const py = (y / rect.height) * 100;
+                glow.style.background = `radial-gradient(circle at ${px}% ${py}%, rgba(212, 175, 55, 0.15) 0%, transparent 60%)`;
+            });
+
+            container.addEventListener('mouseleave', () => {
+                card.style.transform = 'rotateX(0deg) rotateY(0deg)';
+                const glow = document.querySelector('.card-glow');
+                glow.style.background = 'transparent';
+            });
+        }
+
+        // Custom Toast Helper
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // Download VCF Contact Card
+        function downloadVCF() {
+            const vcard = `BEGIN:VCARD
+VERSION:3.0
+FN:محمد الخفاجي
+TEL;TYPE=CELL,VOICE:+9647703084383
+TEL;TYPE=CELL,VOICE:+9647503772659
+EMAIL;TYPE=PREF,INTERNET:mooh80mm@gmail.com
+URL:https://www.facebook.com/share/17qd3D1cnK/
+NOTE:فصيلة الدم O+
+END:VCARD`;
+            
+            const blob = new Blob([new Uint8Array([0xEF, 0xBB, 0xBF]), vcard], { type: 'text/vcard;charset=utf-8;' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = 'محمد_الخفاجي.vcf';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            showToast('تم تحميل ملف جهة الاتصال بنجاح!');
+        }
+
+        // Share Card Functionality
+        function shareCard() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'محمد الخفاجي - Royal Card',
+                    text: 'الملف الشخصي الرقمي لمحمد الخفاجي',
+                    url: window.location.href
+                }).catch(err => console.log(err));
+            } else {
+                navigator.clipboard.writeText(window.location.href).then(() => {
+                    showToast('تم نسخ رابط البطاقة إلى الحافظة!');
+                }).catch(err => {
+                    showToast('فشل نسخ الرابط، يرجى المحاولة يدوياً');
+                });
+            }
+        }
+
+        // QR Code Modal Functions
+        function openQRModal() {
+            const modal = document.getElementById('qrModal');
+            const qrImg = document.getElementById('qrImage');
+            
+            // Generate QR Code image dynamically using a free fast API
+            const currentUrl = window.location.href;
+            qrImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=250x250&color=d4af37&bgcolor=0a0a0a&data=${encodeURIComponent(currentUrl)}`;
+            
+            modal.classList.add('active');
+        }
+
+        function closeQRModal(e) {
+            const modal = document.getElementById('qrModal');
+            modal.classList.remove('active');
+        }
+    </script>
 </body>
 </html>

@@ -1,53 +1,207 @@
 :root {
-    --gold: #d4af37;
-    --dark-bg: #030303;
-    --glass: rgba(255, 255, 255, 0.03);
+    --gold-primary: #d4af37;
+    --gold-secondary: #aa7c11;
+    --gold-light: #f3e5ab;
+    --gold-gradient: linear-gradient(135deg, #aa7c11 0%, #d4af37 50%, #f3e5ab 100%);
+    --gold-text-gradient: linear-gradient(135deg, #f3e5ab 0%, #d4af37 50%, #aa7c11 100%);
+    --dark-bg: #050508;
+    --card-bg: rgba(10, 10, 15, 0.55);
+    --card-border: rgba(212, 175, 55, 0.18);
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.7);
+    --font-arabic: 'Cairo', 'Tahoma', sans-serif;
+    --font-english: 'Outfit', 'Inter', sans-serif;
+    --shadow-glow: 0 0 25px rgba(212, 175, 55, 0.2);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
 }
 
 body {
     background-color: var(--dark-bg);
-    margin: 0;
-    height: 100vh;
+    color: var(--text-primary);
+    font-family: var(--font-arabic);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    padding: 20px;
+    position: relative;
+}
+
+/* Background aura glowing shapes */
+.bg-auras {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.aura {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.12;
+}
+
+.aura-1 {
+    width: 400px;
+    height: 400px;
+    background: #4a3407;
+    top: -10%;
+    left: -10%;
+    animation: floatAura1 15s ease-in-out infinite alternate;
+}
+
+.aura-2 {
+    width: 350px;
+    height: 350px;
+    background: #1e1b4b;
+    bottom: -10%;
+    right: -10%;
+    animation: floatAura2 18s ease-in-out infinite alternate;
+}
+
+.aura-3 {
+    width: 250px;
+    height: 250px;
+    background: #271e05;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.08;
+}
+
+@keyframes floatAura1 {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(50px, 80px) scale(1.2); }
+}
+
+@keyframes floatAura2 {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(-60px, -50px) scale(1.15); }
+}
+
+/* Real Madrid background shield (centered, gold-themed, pulsing and clipped to hide the cross) */
+.madrid-shield {
+    position: fixed;
+    width: 90%;
+    height: 90%;
+    max-width: 500px;
+    background: url('https://upload.wikimedia.org/wikipedia/en/5/56/Real_Madrid_CF.svg') no-repeat center;
+    background-size: contain;
+    opacity: 0.18;
+    filter: brightness(0) saturate(100%) invert(76%) sepia(55%) saturate(417%) hue-rotate(5deg) brightness(92%) contrast(89%);
+    top: 50%; 
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    pointer-events: none;
+    clip-path: inset(4% 0 0 0); /* إزالة الصليب برمجياً بشكل نظيف */
+    animation: pulseShield 6s ease-in-out infinite alternate;
+}
+
+@keyframes pulseShield {
+    0% { opacity: 0.14; transform: translate(-50%, -50%) scale(1); }
+    100% { opacity: 0.22; transform: translate(-50%, -50%) scale(1.05); }
+}
+
+/* Card Container */
+.card-container {
+    perspective: 1000px;
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Glassmorphic Card */
+.glass-card {
+    background: var(--card-bg);
+    width: 100%;
+    padding: 35px 25px;
+    border-radius: 30px;
+    border: 1px solid var(--card-border);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    text-align: center;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.65), 
+                inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    position: relative;
+    overflow: hidden;
+    transform-style: preserve-3d;
+    transition: transform 0.15s ease-out, box-shadow 0.3s ease;
+}
+
+.glass-card:hover {
+    box-shadow: 0 40px 80px rgba(0, 0, 0, 0.8), 
+                0 0 40px rgba(212, 175, 55, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Card reflection light overlay */
+.card-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    border-radius: 30px;
+    transition: background 0.15s ease;
+}
+
+/* Royal Club Emblem inside Card */
+.royal-emblem {
+    width: 45px;
+    height: 45px;
+    margin: 0 auto 15px;
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    font-family: 'Tahoma', sans-serif;
+    clip-path: inset(4% 0 0 0); /* إزالة الصليب برمجياً بشكل نظيف */
 }
 
-/* شعار ريال مدريد الخلفي بتأثير معدني */
-.madrid-shield {
-    position: fixed;
-    width: 120%;
-    height: 120%;
-    background: url('https://upload.wikimedia.org/wikipedia/en/5/56/Real_Madrid_CF.svg') no-repeat center;
-    background-size: contain;
-    opacity: 0.07;
-    filter: grayscale(100%) brightness(200%);
-    /* إزاحة بسيطة للأعلى لإخفاء الصليب برمجياً خارج الشاشة */
-    top: -15%; 
-    z-index: -1;
+.emblem-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: brightness(0) saturate(100%) invert(76%) sepia(55%) saturate(417%) hue-rotate(5deg) brightness(92%) contrast(89%);
+    opacity: 0.85;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-/* البطاقة الزجاجية العائمة */
-.glass-card {
-    background: var(--glass);
-    width: 85%;
-    max-width: 380px;
-    padding: 40px 20px;
-    border-radius: 40px;
-    border: 1px solid rgba(211, 175, 55, 0.15);
-    backdrop-filter: blur(25px);
-    text-align: center;
-    box-shadow: 0 40px 100px rgba(0,0,0,0.8);
+.glass-card:hover .emblem-img {
+    transform: scale(1.1);
+    filter: brightness(0) saturate(100%) invert(85%) sepia(40%) saturate(600%) hue-rotate(5deg) brightness(100%) contrast(100%) drop-shadow(0 0 8px rgba(212, 175, 55, 0.6));
+    opacity: 1;
 }
 
-/* إطار الصورة الشخصية الاحترافي */
+/* Profile Section */
+.profile-section {
+    position: relative;
+    margin-bottom: 22px;
+}
+
 .profile-wrapper {
     position: relative;
-    width: 140px;
-    height: 140px;
-    margin: 0 auto 25px;
+    width: 130px;
+    height: 130px;
+    margin: 0 auto;
+    z-index: 2;
 }
 
 .gold-ring {
@@ -55,9 +209,16 @@ body {
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    border: 2px solid var(--gold);
-    box-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
-    animation: pulse 3s infinite;
+    border: 2px solid transparent;
+    background: linear-gradient(var(--dark-bg), var(--dark-bg)) padding-box, 
+                var(--gold-gradient) border-box;
+    box-shadow: 0 0 25px rgba(212, 175, 55, 0.3);
+    animation: rotateRing 12s linear infinite;
+}
+
+@keyframes rotateRing {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 .profile-pic {
@@ -65,55 +226,458 @@ body {
     height: 100%;
     border-radius: 50%;
     object-fit: cover;
+    border: 4px solid rgba(255, 255, 255, 0.05);
     position: relative;
     z-index: 2;
 }
 
-/* الخط الملكي */
+/* Status indicator dot */
+.status-dot {
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    width: 16px;
+    height: 16px;
+    background-color: #22c55e;
+    border: 3px solid #0a0a0f;
+    border-radius: 50%;
+    z-index: 3;
+    box-shadow: 0 0 10px #22c55e;
+    animation: pulseStatus 2s infinite;
+}
+
+@keyframes pulseStatus {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+    70% { transform: scale(1.1); box-shadow: 0 0 0 8px rgba(34, 197, 94, 0); }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+}
+
+/* Information Section */
+.info-section {
+    margin-bottom: 25px;
+}
+
 .royal-name {
     color: #fff;
-    font-size: 2rem;
-    margin: 10px 0;
-    letter-spacing: 1px;
-    text-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    font-size: 1.9rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+    letter-spacing: 0.5px;
+    background: var(--gold-text-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.royal-title {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-weight: 400;
+    margin-bottom: 12px;
+    opacity: 0.8;
 }
 
 .blood-badge {
-    display: inline-block;
-    background: rgba(255, 0, 0, 0.2);
-    color: #ff4d4d;
-    padding: 5px 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(239, 68, 68, 0.08);
+    color: #ef4444;
+    padding: 5px 15px;
     border-radius: 50px;
-    font-weight: bold;
-    margin-bottom: 30px;
-    border: 1px solid rgba(255, 0, 0, 0.3);
+    font-size: 0.85rem;
+    font-weight: 600;
+    border: 1px solid rgba(239, 68, 68, 0.18);
+    margin: 0 auto;
 }
 
-/* تصميم الأزرار كقطع ذهبية منفصلة */
+.icon-drop {
+    width: 12px;
+    height: 12px;
+    animation: dropPulse 1.8s infinite alternate;
+}
+
+@keyframes dropPulse {
+    0% { transform: scale(0.9); opacity: 0.8; }
+    100% { transform: scale(1.15); opacity: 1; }
+}
+
+/* Gold Item Buttons Style */
 .gold-item {
     display: flex;
-    flex-direction: column;
+    align-items: center;
     text-decoration: none;
-    background: rgba(212, 175, 55, 0.02);
-    border: 1px solid rgba(212, 175, 55, 0.1);
-    margin-bottom: 12px;
-    padding: 15px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(212, 175, 55, 0.15);
     border-radius: 18px;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    padding: 14px 18px;
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
 }
 
-.gold-item .label { color: var(--gold); font-size: 0.8rem; margin-bottom: 4px; opacity: 0.8; }
-.gold-item .value { color: #fff; font-size: 1.1rem; font-weight: bold; }
+.gold-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+    transition: 0.5s;
+}
+
+.gold-item:hover::before {
+    left: 100%;
+}
+
+.gold-item .icon-wrapper {
+    width: 38px;
+    height: 38px;
+    border-radius: 12px;
+    background: rgba(212, 175, 55, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--gold-primary);
+    margin-left: 14px;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.gold-item .icon-wrapper svg {
+    width: 20px;
+    height: 20px;
+}
+
+.gold-item .item-text {
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+}
+
+.gold-item .label {
+    color: var(--gold-light);
+    font-size: 0.75rem;
+    margin-bottom: 2px;
+    opacity: 0.75;
+}
+
+.gold-item .value {
+    color: #fff;
+    font-family: var(--font-english);
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
 
 .gold-item:hover {
-    background: rgba(212, 175, 55, 0.1);
-    transform: translateY(-5px) scale(1.02);
-    border-color: var(--gold);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+    background: rgba(212, 175, 55, 0.08);
+    transform: translateY(-4px);
+    border-color: var(--gold-primary);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), 
+                0 0 15px rgba(212, 175, 55, 0.1);
 }
 
-@keyframes pulse {
-    0% { transform: scale(1); opacity: 0.5; }
-    50% { transform: scale(1.05); opacity: 1; }
-    100% { transform: scale(1); opacity: 0.5; }
+.gold-item:hover .icon-wrapper {
+    background: var(--gold-gradient);
+    color: #000;
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+}
+
+/* Contact Numbers Grid Layout */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+.contact-grid .gold-item {
+    padding: 10px 12px;
+}
+
+.contact-grid .gold-item .icon-wrapper {
+    width: 32px;
+    height: 32px;
+    margin-left: 8px;
+}
+
+.contact-grid .gold-item .icon-wrapper svg {
+    width: 16px;
+    height: 16px;
+}
+
+.contact-grid .gold-item .value {
+    font-size: 0.95rem;
+}
+
+/* Social Actions Stack */
+.actions-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+/* Customized Social Hover Effects */
+.whatsapp-gold:hover {
+    background: rgba(37, 211, 102, 0.08) !important;
+    border-color: #25d366 !important;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), 0 0 15px rgba(37, 211, 102, 0.15) !important;
+}
+.whatsapp-gold:hover .icon-wrapper {
+    background: #25d366 !important;
+    color: #fff !important;
+    box-shadow: 0 0 10px rgba(37, 211, 102, 0.4) !important;
+}
+
+.fb-gold:hover {
+    background: rgba(24, 119, 242, 0.08) !important;
+    border-color: #1877f2 !important;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), 0 0 15px rgba(24, 119, 242, 0.15) !important;
+}
+.fb-gold:hover .icon-wrapper {
+    background: #1877f2 !important;
+    color: #fff !important;
+    box-shadow: 0 0 10px rgba(24, 119, 242, 0.4) !important;
+}
+
+.mail-gold:hover {
+    background: rgba(239, 68, 68, 0.08) !important;
+    border-color: #ef4444 !important;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4), 0 0 15px rgba(239, 68, 68, 0.15) !important;
+}
+.mail-gold:hover .icon-wrapper {
+    background: #ef4444 !important;
+    color: #fff !important;
+    box-shadow: 0 0 10px rgba(239, 68, 68, 0.4) !important;
+}
+
+/* Utilities Section */
+.utilities-section {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.btn-main {
+    width: 100%;
+    padding: 14px 20px;
+    border-radius: 16px;
+    border: none;
+    background: var(--gold-gradient);
+    color: #050508;
+    font-family: var(--font-arabic);
+    font-weight: 700;
+    font-size: 0.95rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.35);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.btn-main svg {
+    width: 18px;
+    height: 18px;
+}
+
+.btn-main:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.55);
+}
+
+.utility-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.btn-secondary {
+    padding: 12px;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.03);
+    color: var(--text-secondary);
+    font-family: var(--font-arabic);
+    font-weight: 600;
+    font-size: 0.85rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary svg {
+    width: 16px;
+    height: 16px;
+}
+
+.btn-secondary:hover {
+    background: rgba(212, 175, 55, 0.08);
+    border-color: var(--gold-primary);
+    color: #fff;
+}
+
+/* Glass Modal Overlay */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-content {
+    background: rgba(15, 15, 20, 0.85);
+    border: 1px solid var(--card-border);
+    border-radius: 24px;
+    width: 90%;
+    max-width: 340px;
+    padding: 35px 25px;
+    text-align: center;
+    position: relative;
+    transform: scale(0.9);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8), 
+                inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.modal-overlay.active .modal-content {
+    transform: scale(1);
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    left: 15px; /* RTL layout close button on top-left */
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    font-size: 1.8rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.close-btn:hover {
+    color: #ef4444;
+}
+
+.modal-content h3 {
+    margin-bottom: 6px;
+    font-size: 1.3rem;
+    background: var(--gold-text-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.modal-content p {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+    margin-bottom: 25px;
+}
+
+.qr-wrapper {
+    background: #0a0a0f;
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 12px;
+    display: inline-block;
+    box-shadow: var(--shadow-glow);
+}
+
+.qr-wrapper img {
+    display: block;
+    width: 200px;
+    height: 200px;
+    border-radius: 8px;
+}
+
+/* Custom Toast Notification */
+.toast {
+    position: fixed;
+    bottom: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(20, 20, 25, 0.9);
+    border: 1px solid var(--gold-primary);
+    color: #fff;
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6), var(--shadow-glow);
+    z-index: 1100;
+    opacity: 0;
+    transition: bottom 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s ease;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    pointer-events: none;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.toast.show {
+    bottom: 30px;
+    opacity: 1;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 480px) {
+    body {
+        padding: 15px;
+    }
+    
+    .glass-card {
+        padding: 30px 18px;
+    }
+    
+    .royal-name {
+        font-size: 1.7rem;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+    
+    .contact-grid .gold-item {
+        padding: 12px 15px;
+    }
+    
+    .contact-grid .gold-item .icon-wrapper {
+        width: 36px;
+        height: 36px;
+        margin-left: 12px;
+    }
+    
+    .contact-grid .gold-item .icon-wrapper svg {
+        width: 18px;
+        height: 18px;
+    }
 }
